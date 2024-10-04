@@ -10,6 +10,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private float _reload;
     [SerializeField] private float _shootPower;
     [SerializeField] private Transform _shootPoint;
+    [SerializeField] private LayerMask _obtacleMask;
 
     private float _reloadTime;
 
@@ -21,8 +22,15 @@ public class Cannon : MonoBehaviour
     private void EnemyScan(Collider closestEnemy)
     {
         RaycastHit hit;
-        Physics.BoxCast(transform.position,_boxSize,transform.forward,out hit,Quaternion.identity,_distance,_enemyMask);
-        if (hit.collider == closestEnemy) Shoot(hit);
+        Physics.BoxCast(_shootPoint.position,_boxSize,transform.forward,out hit,Quaternion.identity,_distance , _enemyMask);
+        if (hit.collider == closestEnemy) 
+        {
+            Vector3 directionToEnemy = hit.transform.position - _shootPoint.position;
+            if(!Physics.BoxCast(_shootPoint.position,_boxSize, directionToEnemy, Quaternion.identity,directionToEnemy.magnitude, _obtacleMask))
+            {
+                Shoot(hit); 
+            }
+        }
     }
 
     private void Shoot(RaycastHit hit)
