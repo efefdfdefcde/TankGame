@@ -12,7 +12,7 @@ public class EnemyCannon : Cannon
 
     private void Start()
     {
-        _currentBullet = _bullet;  
+        _currentShell = _bullet;  
     }
 
 }

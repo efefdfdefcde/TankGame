@@ -3,25 +3,25 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    public event Action<float, float> _reloadAction;
+    public Action<float, float> _reloadAction;
 
-    [SerializeField] private Turret _turret;
+
     [SerializeField] private Vector3 _boxSize;
     [SerializeField] private float _distance;
     [SerializeField] private LayerMask _enemyMask;
-    [SerializeField] private float _shootPower;
-    [SerializeField] private Transform _shootPoint;
+    [SerializeField] protected float _shootPower;
+    [SerializeField] protected Transform _shootPoint;
     [SerializeField] private LayerMask _obtacleMask;
 
     
     [SerializeField] protected float _reloadTime;
     
 
-    private float _reload;
-    private bool _loaded;
-    protected GameObject _currentBullet;
+    protected float _reload;
+    protected bool _loaded;
+    protected GameObject _currentShell;
 
-    private void Update()
+    protected virtual void Update()
     {
         Reload();
     }
@@ -40,11 +40,11 @@ public class Cannon : MonoBehaviour
         }
     }
 
-    private void Shoot(RaycastHit hit)
+    protected virtual void Shoot(RaycastHit hit)
     {
         if(_loaded)
         {
-            GameObject bullet = Instantiate(_currentBullet, _shootPoint.position, Quaternion.identity);
+            GameObject bullet = Instantiate(_currentShell, _shootPoint.position, Quaternion.identity);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             Vector3 enemyVector = (hit.transform.position - _shootPoint.position).normalized;
             rb.AddForce(enemyVector * _shootPower);
@@ -54,7 +54,7 @@ public class Cannon : MonoBehaviour
         }
     }
 
-    private void Reload()
+    protected virtual void Reload()
     {
         if (!_loaded)
         {

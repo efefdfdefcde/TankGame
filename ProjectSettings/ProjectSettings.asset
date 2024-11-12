@@ -165,7 +165,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.UnityTechnologies.Mobile3DTemplate
+    Android: com.DefaultCompany.Myproject1
     Standalone: com.DefaultCompany.My-project--1-
   buildNumber:
     Standalone: 0

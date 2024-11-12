@@ -408,8 +408,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.9788508, y: 1, z: 2.1992188}
+  m_Center: {x: -0.04170251, y: 0, z: -0.10620117}
 --- !u!1 &2799854845845480333
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +779,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3432064809623306312}
-  - component: {fileID: 7647237844494147150}
   m_Layer: 8
   m_Name: Cannon
   m_TagString: Untagged
@@ -803,31 +802,6 @@ Transform:
   - {fileID: 6567904312886024744}
   m_Father: {fileID: 9125041694383091365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7647237844494147150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3998709961501607250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f5819d210708e74b828340e9d076dcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _turret: {fileID: 6785905772979506238}
-  _boxSize: {x: 0.78, y: 4, z: 0}
-  _distance: 50
-  _enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _shootPower: 3500
-  _shootPoint: {fileID: 8548216282397233201}
-  _obtacleMask:
-    serializedVersion: 2
-    m_Bits: 128
-  _reloadTime: 2
-  _bullet: {fileID: 1064822408975798265, guid: d8e3ecfd6be41224cb7059b882af25d5, type: 3}
 --- !u!1 &4280855617838235494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9125041694383091365}
   - component: {fileID: 7941542683945577695}
-  - component: {fileID: 6785905772979506238}
+  - component: {fileID: 7353255862958697560}
   m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
@@ -1072,7 +1046,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6868238, y: 0.961942, z: 2.3400443}
   m_Center: {x: -0.075220585, y: 0.14842424, z: -0.08260548}
---- !u!114 &6785905772979506238
+--- !u!114 &7353255862958697560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1084,11 +1058,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a1085bb1169194da1a1aac9b18c691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRadius: 26
+  _attackRadius: 22.9
   _enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  _rotationSpeed: 50
+  _rotationSpeed: 40
 --- !u!1 &6299376079438770044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,8 +1144,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3715932806249093426}
   - component: {fileID: 2607991285277820522}
-  - component: {fileID: 2759035785270814367}
   - component: {fileID: 8797220620131892743}
+  - component: {fileID: 2806152801677563926}
   m_Layer: 8
   m_Name: t34
   m_TagString: Player
@@ -1230,36 +1204,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2759035785270814367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6552289431838904732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959927474640f914ca0c7f073b64cbe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _steerAngle: 36
-  _breakForce: 200000
-  _motorForce: 500
-  _maxSpeed: 50
-  _wheels:
-  - wheelMesh: {fileID: 9016064619556804149}
-    colider: {fileID: 3752161266981128700}
-    IsSteering: 1
-  - wheelMesh: {fileID: 1624126311736161363}
-    colider: {fileID: 8646146145036781513}
-    IsSteering: 1
-  - wheelMesh: {fileID: 6951558536111447701}
-    colider: {fileID: 1124393482053931644}
-    IsSteering: 0
-  - wheelMesh: {fileID: 3218522294775111466}
-    colider: {fileID: 672184850606156630}
-    IsSteering: 0
-  _centerOfMass: {fileID: 5340360699913800205}
 --- !u!114 &8797220620131892743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,6 +1220,37 @@ MonoBehaviour:
   - {fileID: 7631313020096712834}
   - {fileID: 1862832954743429705}
   - {fileID: 8355110290833871215}
+--- !u!114 &2806152801677563926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552289431838904732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51efcfc338dbf1c4d83ed413cfa1d86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _steerAngle: 40
+  _breakForce: 10000
+  _motorForce: 500
+  _maxSpeed: 50
+  _wheels:
+  - wheelMesh: {fileID: 9016064619556804149}
+    colider: {fileID: 3752161266981128700}
+    IsSteering: 1
+  - wheelMesh: {fileID: 1624126311736161363}
+    colider: {fileID: 8646146145036781513}
+    IsSteering: 1
+  - wheelMesh: {fileID: 6951558536111447701}
+    colider: {fileID: 1124393482053931644}
+    IsSteering: 0
+  - wheelMesh: {fileID: 5595158927891295085}
+    colider: {fileID: 672184850606156630}
+    IsSteering: 0
+  _centerOfMass: {fileID: 5340360699913800205}
+  _fuelPool: {fileID: 0}
 --- !u!1 &7705623104453493717
 GameObject:
   m_ObjectHideFlags: 0

@@ -82,7 +82,13 @@ public class ConvoySpawner : MonoBehaviour
         }
     }
 
-
+    private void OnDestroy()
+    {
+        foreach (Convoy convoy in _convoyList)
+        {
+            convoy._convoyDestroyAction -= ConvoyListCheck;//UnsubWrite
+        }
+    }
 
 
     private void OnDrawGizmos()

@@ -25,6 +25,7 @@ namespace Assets.Scripts.Convoy
         {
             _enemyData._currentConvoy._convoyRetreatAction += Retreat;
             _convoyState.Construct(_enemyData, transform);
+            _enemyData._currentConvoy.ConvoyPartSubscribe(this);
         }
 
         private void Update()
@@ -42,6 +43,12 @@ namespace Assets.Scripts.Convoy
         public override void Retreat()
         {
             _convoyState.Retreat();
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            _enemyData._currentConvoy._convoyRetreatAction -= Retreat;
         }
 
 
