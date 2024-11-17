@@ -15,7 +15,6 @@ namespace Assets
         protected override void OnDeath()
         {
             EventBus.Instance._enemyDeathAction?.Invoke(_enemyType);
-            Debug.Log("ada");
             transform.parent.gameObject.SetActive(false);
         }
     }

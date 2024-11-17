@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI
 
         private Collider _enemy;
 
-        private void Start()
+        private void Awake()
         {
             _scaner._closestEnemyAction += SetEnemy;
             gameObject.SetActive(false);

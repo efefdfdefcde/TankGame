@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Architecture;
 using Assets.Scripts.Shells;
 using Assets.Scripts.UI.ShellSelector;
+using R3;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Assets.Scripts.TankParts.Player
 {
     public class ShellManager : MonoBehaviour
     {
+        public readonly Subject<Unit> _shellEndEvent = new Subject<Unit>();
         public event Action _unselectAction;
         public event Action<GameObject,int> _setShellsAction;
 
@@ -57,6 +59,7 @@ namespace Assets.Scripts.TankParts.Player
         private void ShellSpend()
         {
             _currentShell.Item3--;
+            if(_currentShell.Item3 == 0)_shellEndEvent.OnNext(Unit.Default);
             _currentShell.Item1.UpdateCount(_currentShell.Item3);
         }
 

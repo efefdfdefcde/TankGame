@@ -48,7 +48,6 @@ namespace Assets.Scripts.TankParts
                 _reload = 0;
                 _reloadAction?.Invoke(_reload, _reloadTime);
                 _shellsCount--;
-                Debug.Log(_shellsCount);
                 _shellSpend?.Invoke();
             }
         }
