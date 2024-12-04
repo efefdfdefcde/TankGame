@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Assets.Scripts.Architecture
 {
-    public class PlayerInstaller : MonoInstaller
+    public class PlayerHealthInstaller : MonoInstaller
     {
         [SerializeField] private PlayerHealthRoot _playerHealth;
 
