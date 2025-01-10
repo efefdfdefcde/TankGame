@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069b2772cddf75b4eae90e997ab4751d, type: 3}
+  m_Name: VenicleData
+  m_EditorClassIdentifier: 
+  _name: Tiger 1
+  _Icon: {fileID: 21300000, guid: 039a43ca7b2bb7c4d9cf7b1a4570ccb3, type: 3}
+  _health: 1400
+  _armor: 880
+  _speed: 233
+  _enginePower: 323
+  _turretRotationSpeed: 272
+  _reloadSpeed: 323
+  _researchPoints: 10000
+  _viewPrefab: {fileID: 6552289431838904732, guid: 635051326940f084381c91536051f3b9,
+    type: 3}
+  _researchPrefab: {fileID: 2170180619756028010, guid: 32c0df29e4569724e8b95d530f015b29,
+    type: 3}
+  _structs:
+  - _isAllowed: 0
+    _shellType: 0
+    _data:
+      _damage: 0
+      _shellPenetration: 0
+      _fuseSensivity: 0
+    _gameplayData: {fileID: 0}

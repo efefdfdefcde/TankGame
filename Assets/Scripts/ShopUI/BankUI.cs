@@ -12,16 +12,23 @@ namespace Assets.Scripts.ShopUI
         [SerializeField] private TextMeshProUGUI _gold;
         [SerializeField] private Bank _bank;
 
+        private CompositeDisposable _disposable = new();
+
         [Inject]
         private void Construct()
         {
-            _bank._moneyChangedEvent.Subscribe(money => UpdateMoney(money)).AddTo(this);
-            _bank._goldChangedEvent.Subscribe(gold => UpdateGold(gold)).AddTo(this);
+            _bank._moneyChangedEvent.Subscribe(money => UpdateMoney(money)).AddTo(_disposable);
+            _bank._goldChangedEvent.Subscribe(gold => UpdateGold(gold)).AddTo(_disposable);
         }
 
         private void UpdateMoney(int money) => _money.text = money.ToString();
 
         private void UpdateGold(int gold) => _gold.text = gold.ToString();
+
+        private void OnDestroy()
+        {
+            _disposable.Dispose();
+        }
 
     }
 }

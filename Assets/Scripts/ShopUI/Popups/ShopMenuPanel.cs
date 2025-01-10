@@ -12,14 +12,20 @@ namespace Assets.Scripts.Shop
         [SerializeField] private ShopMenuButton _button;
 
         private GameObject _panel;
+        private CompositeDisposable _disposable = new();
 
         [Inject]
         private void Construct()
         {
             _panel = gameObject;
-            _button._buttonClick.Subscribe(_ => SendPanel()).AddTo(this);
+            _button._buttonClick.Subscribe(_ => SendPanel()).AddTo(_disposable);
         }
 
         private void SendPanel() => _panelShowEvent?.OnNext(_panel);
+
+        private void OnDestroy()
+        {
+            _disposable.Dispose();
+        }
     }
 }

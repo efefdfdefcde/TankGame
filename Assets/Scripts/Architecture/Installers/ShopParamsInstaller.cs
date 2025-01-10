@@ -1,6 +1,4 @@
 ﻿using Assets.Scripts.Architecture.SaveSistem;
-using Assets.Scripts.Architecture.Test;
-using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;

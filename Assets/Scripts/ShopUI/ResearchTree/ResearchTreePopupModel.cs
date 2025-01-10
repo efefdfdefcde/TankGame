@@ -7,15 +7,17 @@ namespace Assets.Scripts.ShopUI.ResearchTree
 {
     public class ResearchTreePopupModel : MonoBehaviour
     {
-        public Subject<ResearchTreePopupModel> _switchSignalEvent = new();
+        public static Subject<ResearchTreePopupModel> _switchSignalEvent = new();
 
         [SerializeField] private ResearchTreePopupController _controller;
         [SerializeField] private ResearchTreePopupView _view;
 
+        private CompositeDisposable _disposable = new();
+
         [Inject]
         private void Construct()
         {
-            _controller._switchPopupEvent.Subscribe(_ => SwitchSignal()).AddTo(this);
+            _controller._switchPopupEvent.Subscribe(_ => SwitchSignal()).AddTo(_disposable);
         }
 
         private void SwitchSignal()
@@ -31,6 +33,11 @@ namespace Assets.Scripts.ShopUI.ResearchTree
         public void DeactivatePopup()
         {
             _view.DeactivatePopup();
+        }
+
+        private void OnDestroy()
+        {
+            _disposable.Dispose();  
         }
     }
 }

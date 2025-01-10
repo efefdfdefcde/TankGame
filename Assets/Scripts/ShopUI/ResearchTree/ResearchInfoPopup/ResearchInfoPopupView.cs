@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Assets.Scripts.Shop.ResearchTree
+{
+    public class ResearchInfoPopupView : MonoBehaviour
+    {
+        [SerializeField] private Image _icon;
+        [SerializeField] private TextMeshProUGUI _name;
+        [SerializeField] private TextMeshProUGUI _health;
+        [SerializeField] private TextMeshProUGUI _speed;
+        [SerializeField] private TextMeshProUGUI _enginePower;
+        [SerializeField] private TextMeshProUGUI _turretRottationSpeed;
+        [SerializeField] private TextMeshProUGUI _reloadSpeed;
+
+        public void UpdateInfo(VenicleData data)
+        {
+            _icon.sprite = data._Icon;
+            _name.text = data._name;
+            _health.text = data._health.ToString();
+            _speed.text = data._speed.ToString();
+            _enginePower.text = data._enginePower.ToString();
+            _turretRottationSpeed.text = data._turretRotationSpeed.ToString();
+            _reloadSpeed.text = data._reloadSpeed.ToString();
+        }
+
+    }
+}

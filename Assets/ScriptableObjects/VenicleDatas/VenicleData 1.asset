@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069b2772cddf75b4eae90e997ab4751d, type: 3}
+  m_Name: VenicleData 1
+  m_EditorClassIdentifier: 
+  _name: bt5
+  _Icon: {fileID: 21300000, guid: 6e83360609a0aaf4e93c2c9a8606dec7, type: 3}
+  _health: 1403
+  _armor: 4055
+  _speed: 545
+  _enginePower: 54
+  _turretRotationSpeed: 24212
+  _reloadSpeed: 543
+  _researchPoints: 6000
+  _shellStorageCapasity: 100
+  _viewPrefab: {fileID: 8722284609859799867, guid: a46f5aab42463de4194a5f9058c42d45,
+    type: 3}
+  _researchPrefab: {fileID: 2170180619756028010, guid: 32c0df29e4569724e8b95d530f015b29,
+    type: 3}
+  _structs:
+  - _shellType: 0
+    _data:
+      _isAllowed: 1
+      _name: Armor Piersing
+      _damage: 200
+      _shellPenetration: 150
+      _fuseSensivity: 20
+      _count: 0
+    _gameplayData: {fileID: 11400000, guid: c3e2aa7d8e9b1174a9799afce61983b3, type: 2}
+  - _shellType: 1
+    _data:
+      _isAllowed: 1
+      _name: Hight Explosive
+      _damage: 400
+      _shellPenetration: 20
+      _fuseSensivity: 0
+      _count: 0
+    _gameplayData: {fileID: 11400000, guid: a105d2b1fda43034c8ac599e8bd43907, type: 2}
+  - _shellType: 2
+    _data:
+      _isAllowed: 1
+      _name: Hight Explosive
+      _damage: 400
+      _shellPenetration: 20
+      _fuseSensivity: 0
+      _count: 0
+    _gameplayData: {fileID: 11400000, guid: a105d2b1fda43034c8ac599e8bd43907, type: 2}
+  - _shellType: 3
+    _data:
+      _isAllowed: 1
+      _name: Hight Explosive
+      _damage: 400
+      _shellPenetration: 20
+      _fuseSensivity: 0
+      _count: 0
+    _gameplayData: {fileID: 11400000, guid: a105d2b1fda43034c8ac599e8bd43907, type: 2}

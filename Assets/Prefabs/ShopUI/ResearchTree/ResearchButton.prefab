@@ -85,7 +85,6 @@ GameObject:
   m_Component:
   - component: {fileID: 307569753597036337}
   - component: {fileID: 6495798064518452951}
-  - component: {fileID: 7533919281506328873}
   - component: {fileID: 4636904518496290379}
   - component: {fileID: 7688894899824777831}
   m_Layer: 0
@@ -158,19 +157,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7533919281506328873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3536422664208574509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c675090e8f31fa458f5c37e1dfdcc52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 6495798064518452951}
 --- !u!222 &4636904518496290379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -221,6 +207,7 @@ GameObject:
   - component: {fileID: 3933723588460514796}
   - component: {fileID: 2187449821381729625}
   - component: {fileID: 6751969420005081876}
+  - component: {fileID: 1936202284933220524}
   m_Layer: 5
   m_Name: ResearchButton
   m_TagString: Untagged
@@ -286,8 +273,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c744c602a5cb374e8d0e8c957c361f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 7533919281506328873}
+  _controller: {fileID: 1936202284933220524}
   _view: {fileID: 2187449821381729625}
+--- !u!114 &1936202284933220524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073797398836503534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c675090e8f31fa458f5c37e1dfdcc52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 6495798064518452951}
 --- !u!1 &5920693792762188180
 GameObject:
   m_ObjectHideFlags: 0
