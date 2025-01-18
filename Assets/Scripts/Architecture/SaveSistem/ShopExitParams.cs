@@ -9,13 +9,13 @@ namespace Assets.Scripts.Architecture.SaveSistem
     {
         public int _money;
         public int _gold;
-        public int _researchPoints;
+ 
 
-        public ShopExitParams(int money, int gold, int researchPoints)
+        public ShopExitParams(int money, int gold)
         {
             _money = money;
             _gold = gold;
-            _researchPoints = researchPoints;
+          
         }
     }
 }

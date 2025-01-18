@@ -8,13 +8,13 @@ namespace Assets.Scripts.Shop.ResearchTree
     public class ResearchInfoPopup : MonoBehaviour
     {
         public Subject<GameObject> _demonstrateVenicleEvent = new();
-        public Subject<VenicleData> _researchVenicleEvent = new();
+        public Subject<VehicleData> _researchVenicleEvent = new();
 
         [SerializeField] private ResearchInfoPopupView _view;
         [SerializeField] private ResearchInfoController _controller;
         [SerializeField] private GameObject _popup;
 
-        private VenicleData _data;
+        private VehicleData _data;
         private CompositeDisposable _disposable = new();
         
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Shop.ResearchTree
             EventBus.Instance._panelCloseEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable); 
         }
 
-        private void OpenPanel(VenicleData data)
+        private void OpenPanel(VehicleData data)
         {
             _popup.SetActive(true);
             _view.UpdateInfo(data);

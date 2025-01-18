@@ -15,7 +15,7 @@ namespace Assets.Scripts.Shop.ResearchTree
         [SerializeField] private TextMeshProUGUI _turretRottationSpeed;
         [SerializeField] private TextMeshProUGUI _reloadSpeed;
 
-        public void UpdateInfo(VenicleData data)
+        public void UpdateInfo(VehicleData data)
         {
             _icon.sprite = data._Icon;
             _name.text = data._name;

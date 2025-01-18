@@ -15,7 +15,7 @@ namespace Assets.Scripts.Shop.Shells
         [SerializeField] private ShellStorageView _view;
 
         private Dictionary<ShellType, ShellPopup> _popups;
-        private VenicleData _data;
+        private VehicleData _data;
         private CompositeDisposable _disposable = new();
 
 
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Shop.Shells
         private void CalculateShells()
         {
             _shellsCount = 0;
-            foreach (var shell in _data._shellInfo)_shellsCount += shell.Value._data._count;
+            foreach (var shell in _data._shellInfo)_shellsCount += shell.Value._count;
             _shellsCountEvent.OnNext(_shellsCount);
         }
 
@@ -47,13 +47,13 @@ namespace Assets.Scripts.Shop.Shells
                 count = info.value - count;
                 var popup = _popups[info.type];
                 var shell = _data._shellInfo[info.type];
-                shell._data._count += count;
-                popup.CountUpdate(shell._data._count);
+                shell._count += count;
+                popup.CountUpdate(shell._count);
             }
             else
             {
                 var shell = _data._shellInfo[info.type];
-                shell._data._count += info.value;
+                shell._count += info.value;
             }
             CalculateShells();
         }

@@ -7,7 +7,7 @@ namespace Assets.Scripts.Architecture
     public class DictonaryFiller : MonoBehaviour
     {
 
-        [SerializeField] private VenicleData[] _datas;
+        [SerializeField] private VehicleData[] _datas;
 
         private void Awake()
         {

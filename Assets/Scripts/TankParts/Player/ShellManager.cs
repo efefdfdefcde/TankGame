@@ -1,10 +1,12 @@
 ﻿using Assets.Scripts.Architecture;
 using Assets.Scripts.Shells;
+using Assets.Scripts.Shop.ResearchTree;
 using Assets.Scripts.UI.ShellSelector;
 using R3;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Assets.Scripts.Shop.ResearchTree.VehicleData;
 
 namespace Assets.Scripts.TankParts.Player
 {
@@ -14,7 +16,7 @@ namespace Assets.Scripts.TankParts.Player
         public event Action _unselectAction;
         public event Action<GameObject,int> _setShellsAction;
 
-        [SerializeField] private List<ShellDataWithCount> _dataList;//Override
+        [SerializeField] private List<ShellData> _dataList;//Override
         [SerializeField] private GameObject _shellOrganiser;
         [SerializeField] private ShellConstructor _shellFormPrefab;
         [SerializeField] private PlayerCannon _playerCannon;
@@ -30,12 +32,12 @@ namespace Assets.Scripts.TankParts.Player
             {
                 var shellForm = Instantiate(_shellFormPrefab);
                 shellForm.transform.SetParent(_shellOrganiser.transform);
-                shellForm.ConstructView(shellData._data, shellData._count); 
-                var formViewController = shellForm.GetViewController();
-                if (!_startShell) _startShell = formViewController.Item2;
-                formViewController.Item1.UpdateCount(shellData._count);
-                _shellsCatalog.Add(formViewController.Item2,(formViewController.Item1,shellData._data,shellData._count));
-                formViewController.Item2._selectShellAction += SelectShell;
+                //shellForm.ConstructView(shellData._data, shellData._count); 
+                //var formViewController = shellForm.GetViewController();
+                //if (!_startShell) _startShell = formViewController.Item2;
+                //formViewController.Item1.UpdateCount(shellData._count);
+                //_shellsCatalog.Add(formViewController.Item2,(formViewController.Item1,shellData._data,shellData._count));
+                //formViewController.Item2._selectShellAction += SelectShell;
             }
             _playerCannon._shellSpend += ShellSpend;
             SelectShell(_startShell);
@@ -52,7 +54,7 @@ namespace Assets.Scripts.TankParts.Player
             ShellData shellData = _currentShell.Item2;
             GameObject shell = shellData._shellPrefab;
             var shellConstructor = shell.GetComponent<PlayerShell>();
-            shellConstructor.SetCharacteristic(shellData._damage, shellData._shellPenetration, shellData._fuseSensitivity);
+            shellConstructor.SetCharacteristic(shellData._damage, shellData._shellPenetration, shellData._fuseSensivity);
             _setShellsAction?.Invoke(shell, _currentShell.Item3);
         }
 

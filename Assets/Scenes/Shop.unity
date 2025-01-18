@@ -7548,7 +7548,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _money: 22
   _gold: 333
-  _researchPoints: 33
 --- !u!1 &635161434
 GameObject:
   m_ObjectHideFlags: 0

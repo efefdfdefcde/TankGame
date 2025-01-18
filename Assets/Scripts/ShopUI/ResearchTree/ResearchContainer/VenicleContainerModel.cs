@@ -5,11 +5,11 @@ using Zenject;
 
 public class VenicleContainerModel : MonoBehaviour
 {
-    public static Subject<VenicleData> _openInfoPanel = new();
+    public static Subject<VehicleData> _openInfoPanel = new();
 
     [SerializeField] private VenicleContainerView _view;
     [SerializeField] private VenicleContainerController _controller;
-    [SerializeField] private VenicleData _data;
+    [SerializeField] private VehicleData _data;
 
     private CompositeDisposable _disposable = new();
 

@@ -33,9 +33,12 @@ namespace Assets
         public Subject<Unit> _panelCloseEvent = new();
         public Subject<Unit> _hidePopup = new();
         public Subject<Unit> _showPopup = new();
-        public Subject<VenicleData> _showResearchP = new();    
+        public Subject<VehicleData> _showResearchP = new();    
         public Subject<Unit> _hideResearchP = new();
         public Subject<Unit> _researchPUpdate = new();
+
+        //Upgrade
+        public Subject<Unit> _spawnPopup = new();
 
         //Bank
         public Subject<int> _spendMoney = new();

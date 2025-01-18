@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI.ShellSelector
         [SerializeField] private ShellView _view;
         [SerializeField] private ShellConroller _conroller;
 
-        public void ConstructView(ShellData shellData, int ShellCount) => _view.Construct(shellData, ShellCount);
+        //public void ConstructView(ShellData shellData, int ShellCount) => _view.Construct(shellData, ShellCount);
 
         public (ShellView, ShellConroller) GetViewController() => (_view, _conroller);
     }

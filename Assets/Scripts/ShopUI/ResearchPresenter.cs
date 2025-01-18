@@ -9,7 +9,7 @@ public class ResearchPresenter : MonoBehaviour
     [SerializeField] private GameObject _researchPPopup;
     [SerializeField] private TextMeshProUGUI _points;
 
-    private VenicleData _data;
+    private VehicleData _data;
     private CompositeDisposable _disposable = new();
 
     private void Start()
@@ -19,7 +19,7 @@ public class ResearchPresenter : MonoBehaviour
         EventBus.Instance._researchPUpdate.Subscribe(_ => { _points.text = _data._researchPoints.ToString(); }).AddTo(_disposable);
     }
 
-    private void ShowResearchPoint(VenicleData data)
+    private void ShowResearchPoint(VehicleData data)
     {
         _data = data;
         _researchPPopup.SetActive(true);

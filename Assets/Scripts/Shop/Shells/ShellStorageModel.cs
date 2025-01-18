@@ -8,11 +8,11 @@ namespace Assets.Scripts.Shop.Shells
 {
     public class ShellStorageModel : MonoBehaviour
     {
-        public Subject<VenicleData> _setDataEvent = new();
+        public Subject<VehicleData> _setDataEvent = new();
 
         [SerializeField] private PlayerDataManager _dataManager;
 
-        private VenicleData _data;
+        private VehicleData _data;
 
         private CompositeDisposable _disposable = new();
 

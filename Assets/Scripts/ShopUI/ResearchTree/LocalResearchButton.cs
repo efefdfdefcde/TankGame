@@ -8,12 +8,12 @@ namespace Assets.Scripts.ShopUI.ResearchTree
 {
     public class LocalResearchButton : MonoBehaviour
     {
-        public Subject<VenicleData> _researchVenicleEvent = new();
+        public Subject<VehicleData> _researchVenicleEvent = new();
 
         [SerializeField] private Button _button;
         [SerializeField] private PlayerDataManager _researchManager;
 
-        private VenicleData _playerVenicle;
+        private VehicleData _playerVenicle;
         private CompositeDisposable _disposable = new();
 
         [Inject]
@@ -28,7 +28,7 @@ namespace Assets.Scripts.ShopUI.ResearchTree
             _researchVenicleEvent?.OnNext(_playerVenicle);
         }
 
-        private void SetData(VenicleData playerVenicle)
+        private void SetData(VehicleData playerVenicle)
         {
             _playerVenicle = playerVenicle;
         }

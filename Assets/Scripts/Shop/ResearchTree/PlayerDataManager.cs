@@ -5,9 +5,9 @@ using Zenject;
 
 public class PlayerDataManager : MonoBehaviour
 {
-    public Subject<VenicleData> _setVenicleEvent = new();
+    public Subject<VehicleData> _setVenicleEvent = new();
 
-    [SerializeField] private VenicleData _playerVenicle;
+    [SerializeField] private VehicleData _playerVenicle;
 
 
     private void Start()

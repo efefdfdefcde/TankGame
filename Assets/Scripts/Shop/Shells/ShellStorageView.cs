@@ -22,7 +22,7 @@ namespace Assets.Scripts.Shop.Shells
         [SerializeField] private TextMeshProUGUI _shellsCount;
 
         private Dictionary<ShellType,ShellPopup> _spawnedPopups = new();
-        private VenicleData _data;
+        private VehicleData _data;
 
         private CompositeDisposable _disposable = new();
 
@@ -41,11 +41,11 @@ namespace Assets.Scripts.Shop.Shells
             if (_spawnedPopups.Count > 0) DestoyPopups();
             foreach(var shell in _data._shellInfo)
             {
-                if (shell.Value._data._isAllowed)
+                if (shell.Value._isAllowed)
                 {
                     var popup = Instantiate(_popupPref, _popupParent.transform);
-                    popup.Init(shell.Value._gameplayData._shellImage, shell.Value._data._name, shell.Value._data._damage,
-                        shell.Value._data._shellPenetration, shell.Value._data._fuseSensivity,shell.Value._data._count,_data._shellStorageCapasity, shell.Key);
+                    popup.Init(shell.Value._shellImage, shell.Value._name, shell.Value._damage,
+                        shell.Value._shellPenetration, shell.Value._fuseSensivity,shell.Value._count,_data._shellStorageCapasity, shell.Key);
                     _spawnedPopups.Add(shell.Key,popup);
                 }     
             }

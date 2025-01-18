@@ -12,54 +12,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069b2772cddf75b4eae90e997ab4751d, type: 3}
   m_Name: VenicleData 1
   m_EditorClassIdentifier: 
+  _isAwailable: 0
   _name: bt5
   _Icon: {fileID: 21300000, guid: 6e83360609a0aaf4e93c2c9a8606dec7, type: 3}
-  _health: 1403
-  _armor: 4055
+  _health: 2703
+  _armor: 4620
   _speed: 545
   _enginePower: 54
-  _turretRotationSpeed: 24212
-  _reloadSpeed: 543
-  _researchPoints: 6000
+  _turretRotationSpeed: 2765
+  _reloadSpeed: 11043
+  _researchPoints: 9108
   _shellStorageCapasity: 100
   _viewPrefab: {fileID: 8722284609859799867, guid: a46f5aab42463de4194a5f9058c42d45,
     type: 3}
-  _researchPrefab: {fileID: 2170180619756028010, guid: 32c0df29e4569724e8b95d530f015b29,
+  _researchPrefab: {fileID: 2170180619756028010, guid: 426849442fb93de4cbb28659644ffcf9,
     type: 3}
   _structs:
   - _shellType: 0
     _data:
       _isAllowed: 1
       _name: Armor Piersing
-      _damage: 200
-      _shellPenetration: 150
+      _damage: 400
+      _shellPenetration: 425
       _fuseSensivity: 20
-      _count: 0
-    _gameplayData: {fileID: 11400000, guid: c3e2aa7d8e9b1174a9799afce61983b3, type: 2}
+      _count: 64
+      _shellImage: {fileID: 0}
+      _selectColor: {r: 0, g: 0, b: 0, a: 0}
+      _shellPrefab: {fileID: 0}
   - _shellType: 1
     _data:
       _isAllowed: 1
       _name: Hight Explosive
-      _damage: 400
+      _damage: 735
       _shellPenetration: 20
       _fuseSensivity: 0
-      _count: 0
-    _gameplayData: {fileID: 11400000, guid: a105d2b1fda43034c8ac599e8bd43907, type: 2}
+      _count: 36
+      _shellImage: {fileID: 0}
+      _selectColor: {r: 0, g: 0, b: 0, a: 0}
+      _shellPrefab: {fileID: 0}
   - _shellType: 2
     _data:
-      _isAllowed: 1
-      _name: Hight Explosive
+      _isAllowed: 0
+      _name: Shaped Charge
       _damage: 400
-      _shellPenetration: 20
+      _shellPenetration: 595
       _fuseSensivity: 0
       _count: 0
-    _gameplayData: {fileID: 11400000, guid: a105d2b1fda43034c8ac599e8bd43907, type: 2}
+      _shellImage: {fileID: 0}
+      _selectColor: {r: 0, g: 0, b: 0, a: 0}
+      _shellPrefab: {fileID: 0}
   - _shellType: 3
     _data:
-      _isAllowed: 1
-      _name: Hight Explosive
+      _isAllowed: 0
+      _name: Sabot
       _damage: 400
       _shellPenetration: 20
       _fuseSensivity: 0
       _count: 0
-    _gameplayData: {fileID: 11400000, guid: a105d2b1fda43034c8ac599e8bd43907, type: 2}
+      _shellImage: {fileID: 0}
+      _selectColor: {r: 0, g: 0, b: 0, a: 0}
+      _shellPrefab: {fileID: 0}

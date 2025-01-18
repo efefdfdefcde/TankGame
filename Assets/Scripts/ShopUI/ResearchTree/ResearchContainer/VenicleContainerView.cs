@@ -9,7 +9,7 @@ public class VenicleContainerView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _name;
   
 
-    public void Init(VenicleData data)
+    public void Init(VehicleData data)
     {
         _icon.sprite = data._Icon;
         _name.text = data._name;

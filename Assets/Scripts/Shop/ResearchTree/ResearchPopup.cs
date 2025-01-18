@@ -32,7 +32,7 @@ namespace Assets.Scripts.Shop.ResearchTree
             _closeButton.onClick.AddListener(DestroyPopup);
         }
 
-        private void SpawnResearchPopup(VenicleData researchPrefab)
+        private void SpawnResearchPopup(VehicleData researchPrefab)
         {
             _closeButton.gameObject.SetActive(true);
             EventBus.Instance._hidePopup.OnNext(Unit.Default);

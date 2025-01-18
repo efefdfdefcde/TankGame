@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.Shop.ResearchTree;
 using Assets.Scripts.TankParts.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Assets.Scripts.Shop.ResearchTree.VehicleData;
 
 namespace Assets.Scripts.UI.ShellSelector
 {
