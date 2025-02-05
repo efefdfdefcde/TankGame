@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Shop.ResearchTree;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Architecture
 {
@@ -9,7 +10,8 @@ namespace Assets.Scripts.Architecture
 
         [SerializeField] private VehicleData[] _datas;
 
-        private void Awake()
+        [Inject]
+        private void Construct()
         {
             foreach (var data in _datas)
             {

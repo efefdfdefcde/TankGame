@@ -10,8 +10,8 @@ namespace Assets.Scripts.Shop
         [SerializeField] private GameObject _menuPanel;
         [SerializeField] private GameObject freeLookCam;
         [SerializeField] private PopupCloser _closer;
-        [SerializeField] private ResearchPopup _researchPopup;
-        [SerializeField] private VenicleDemonstrator _venicleDemonstrator;
+        [SerializeField] private UpgradePopupSpawner _researchPopup;
+        [SerializeField] private VenicleSpawner _venicleDemonstrator;
 
         private GameObject _currentPanel;
         private CompositeDisposable _disposables = new();

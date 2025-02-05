@@ -6,63 +6,91 @@ using R3;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static Assets.Scripts.Shop.ResearchTree.VehicleData;
+using Zenject;
+
 
 namespace Assets.Scripts.TankParts.Player
 {
     public class ShellManager : MonoBehaviour
     {
-        public readonly Subject<Unit> _shellEndEvent = new Subject<Unit>();
+        public Subject<Unit> _shellManagerInit = new();
+        public Subject<Unit> _shellEndEvent = new Subject<Unit>();
         public event Action _unselectAction;
         public event Action<GameObject,int> _setShellsAction;
 
-        [SerializeField] private List<ShellData> _dataList;//Override
+        [SerializeField] private DataManagerGameplay _dataManager;
         [SerializeField] private GameObject _shellOrganiser;
         [SerializeField] private ShellConstructor _shellFormPrefab;
         [SerializeField] private PlayerCannon _playerCannon;
 
-        private Dictionary<ShellConroller, (ShellView, ShellData, int)> _shellsCatalog = new();
-        private (ShellView, ShellData, int) _currentShell;
+        private List<ShellData> _dataList = new();
+        private Dictionary<ShellConroller, (ShellView, ShellData)> _shellsCatalog = new();
+        private (ShellView shellView, ShellData shellData) _currentShell;
         private ShellConroller _startShell;
+
+        private CompositeDisposable _disposables = new();
+
+        [Inject]
+        private void Construct()
+        {
+            _dataManager._shellManagerInit.Subscribe(data =>
+            {
+                foreach (var shellData in data._shellInfo)
+                {
+                    if (shellData.Value._isAllowed && shellData.Value._count > 0) _dataList.Add(shellData.Value);
+                }
+            }).AddTo(_disposables);
+        }
 
         private void Start()
         {
-
-            foreach (var shellData in _dataList)
-            {
-                var shellForm = Instantiate(_shellFormPrefab);
-                shellForm.transform.SetParent(_shellOrganiser.transform);
-                //shellForm.ConstructView(shellData._data, shellData._count); 
-                //var formViewController = shellForm.GetViewController();
-                //if (!_startShell) _startShell = formViewController.Item2;
-                //formViewController.Item1.UpdateCount(shellData._count);
-                //_shellsCatalog.Add(formViewController.Item2,(formViewController.Item1,shellData._data,shellData._count));
-                //formViewController.Item2._selectShellAction += SelectShell;
-            }
+            _shellManagerInit.OnNext(Unit.Default);
+            _shellManagerInit.OnCompleted();
+            ShellSpawn();
             _playerCannon._shellSpend += ShellSpend;
             SelectShell(_startShell);
         }
 
+        private void ShellSpawn()
+        {
+            foreach (var shellData in _dataList)
+            {
+                var shellForm = Instantiate(_shellFormPrefab);
+                shellForm.transform.SetParent(_shellOrganiser.transform);
+                shellForm.ConstructView(shellData);
+                var formViewController = shellForm.GetViewController();
+                if (!_startShell) _startShell = formViewController.Item2;
+                formViewController.Item1.UpdateCount(shellData._count);
+                _shellsCatalog.Add(formViewController.Item2, (formViewController.Item1, shellData));
+                formViewController.Item2._selectShellAction += SelectShell;
+            }
+        }
+
         private void SelectShell(ShellConroller controller)
         {
-            if (_currentShell.Item1 != null)
+            if (_currentShell.shellView != null)
             {
-                _currentShell.Item1.Unselect();
+                _currentShell.shellView.Unselect();
             }
             _currentShell = _shellsCatalog[controller];
-            _currentShell.Item1.Select();
+            _currentShell.shellView.Select();
             ShellData shellData = _currentShell.Item2;
             GameObject shell = shellData._shellPrefab;
             var shellConstructor = shell.GetComponent<PlayerShell>();
-            shellConstructor.SetCharacteristic(shellData._damage, shellData._shellPenetration, shellData._fuseSensivity);
-            _setShellsAction?.Invoke(shell, _currentShell.Item3);
+            shellConstructor.SetCharacteristic(shellData._damage, shellData._shellPenetration, shellData._fuseSensivity); //Set Characteristic to prefab
+            _setShellsAction?.Invoke(shell, _currentShell.shellData._count);
         }
 
         private void ShellSpend()
         {
-            _currentShell.Item3--;
-            if(_currentShell.Item3 == 0)_shellEndEvent.OnNext(Unit.Default);
-            _currentShell.Item1.UpdateCount(_currentShell.Item3);
+            _currentShell.Item2._count--;
+            if(_currentShell.Item2._count == 0)_shellEndEvent.OnNext(Unit.Default);
+            _currentShell.shellView.UpdateCount(_currentShell.Item2._count);
+        }
+
+        private void OnDestroy()
+        {
+            _disposables.Dispose();
         }
 
     }

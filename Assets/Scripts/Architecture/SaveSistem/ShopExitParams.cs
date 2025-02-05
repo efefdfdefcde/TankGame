@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using Assets.Scripts.Shop.ResearchTree.NewUpgrade;
+using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Architecture.SaveSistem
 {
@@ -9,12 +9,16 @@ namespace Assets.Scripts.Architecture.SaveSistem
     {
         public int _money;
         public int _gold;
+        public int _level;
+        public int _levelExperience;
+        public string _currentVehicleWay;
+        public Dictionary<string, UpgradeStatusDictonary> _upgradeStatus;
+        public Dictionary<string, VehicleSave> _datas;
  
 
-        public ShopExitParams(int money, int gold)
+        public ShopExitParams()
         {
-            _money = money;
-            _gold = gold;
+            _upgradeStatus = new();
           
         }
     }

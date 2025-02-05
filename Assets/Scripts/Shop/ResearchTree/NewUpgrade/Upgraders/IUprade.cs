@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Shop.ResearchTree.Upgraders
+﻿using Assets.Scripts.Architecture;
+
+namespace Assets.Scripts.Shop.ResearchTree.Upgraders
 {
     public interface IUprade
     {

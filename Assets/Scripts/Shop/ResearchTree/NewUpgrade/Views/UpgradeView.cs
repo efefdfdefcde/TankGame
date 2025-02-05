@@ -1,4 +1,5 @@
-﻿using R3;
+﻿using Assets.Scripts.Architecture;
+using R3;
 using System;
 using TMPro;
 using UnityEngine;
@@ -86,17 +87,17 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade
             if (_popup)
             {
                 _popup.UpgradeResearched(button, price);
-                _frame.color = _allowedBuy;
-            }        
+            }
+            _frame.color = _allowedBuy;
         }
 
         public void UpgradeBought()
         {
             if(_popup)
             {
-                _popup.UpgradeBought();
-                _frame.color = _bought;
+                _popup.UpgradeBought();              
             }
+            _frame.color = _bought;
         }
 
         private void OnDestroy()

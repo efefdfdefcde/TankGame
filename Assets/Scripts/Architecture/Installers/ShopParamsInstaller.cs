@@ -14,8 +14,14 @@ namespace Assets.Scripts.Architecture.Installers
         {
             ShopExitParams exitParams = DeserializeExitParams();
             ShopEnterParams enterParams = DeserialazeEnterParams();
-            Container.Bind<ShopExitParams>().FromInstance(exitParams).AsSingle();
-            Container.Bind<ShopEnterParams>().FromInstance(enterParams).AsSingle();
+            if (exitParams != null)
+            {
+                Container.Bind<ShopExitParams>().FromInstance(exitParams).AsSingle();
+            }
+            if (enterParams != null)
+            {
+                Container.Bind<ShopEnterParams>().FromInstance(enterParams).AsSingle();
+            }
         }
 
         private ShopExitParams DeserializeExitParams()

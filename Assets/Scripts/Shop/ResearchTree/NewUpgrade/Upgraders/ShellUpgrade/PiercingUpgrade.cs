@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Models;
+﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

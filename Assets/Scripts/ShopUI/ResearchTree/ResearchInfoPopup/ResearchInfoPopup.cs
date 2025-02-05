@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.ShopUI.ResearchTree;
+﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.ShopUI.ResearchTree;
 using R3;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,7 @@ namespace Assets.Scripts.Shop.ResearchTree
     {
         public Subject<GameObject> _demonstrateVenicleEvent = new();
         public Subject<VehicleData> _researchVenicleEvent = new();
+        public Subject<VehicleData> _changeEvent = new();
 
         [SerializeField] private ResearchInfoPopupView _view;
         [SerializeField] private ResearchInfoController _controller;
@@ -24,6 +26,7 @@ namespace Assets.Scripts.Shop.ResearchTree
             _controller._researchEvent.Subscribe(_ => ResearchVenicle()).AddTo(_disposable);
             _controller._demonstrateEvent.Subscribe(_ => DemonstrateVenicle()).AddTo(_disposable);
             _controller._closeEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable);
+            _controller._changeVehicle.Subscribe(_ => ChangeVehicle()).AddTo(_disposable);
             VenicleContainerModel._openInfoPanel.Subscribe(data => OpenPanel(data)).AddTo(_disposable);
             ResearchTreePopupModel._switchSignalEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable);
             EventBus.Instance._panelCloseEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable); 
@@ -33,6 +36,7 @@ namespace Assets.Scripts.Shop.ResearchTree
         {
             _popup.SetActive(true);
             _view.UpdateInfo(data);
+            _view.ButtonUpdate(data._isAwailable);
             _data = data;
         }
 
@@ -44,6 +48,11 @@ namespace Assets.Scripts.Shop.ResearchTree
         private void DemonstrateVenicle()
         {
             _demonstrateVenicleEvent?.OnNext(_data._viewPrefab);
+        }
+
+        private void ChangeVehicle()
+        {
+            _changeEvent.OnNext(_data);
         }
 
         private void ClosePanel()

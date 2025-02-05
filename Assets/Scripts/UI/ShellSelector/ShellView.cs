@@ -1,10 +1,7 @@
-﻿using Assets.Scripts.Architecture;
-using Assets.Scripts.Shop.ResearchTree;
-using Assets.Scripts.TankParts.Player;
+﻿using Assets.Scripts.Shop.ResearchTree;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Assets.Scripts.Shop.ResearchTree.VehicleData;
 
 namespace Assets.Scripts.UI.ShellSelector
 {
@@ -16,11 +13,11 @@ namespace Assets.Scripts.UI.ShellSelector
 
         private Color _selectColor;
 
-        public void Construct(ShellData shellData, int startCount)
+        public void Construct(ShellData shellData)
         {
             _shellImage.sprite = shellData._shellImage;
             _selectColor = shellData._selectColor;
-            _shellCount.text = startCount.ToString();
+            _shellCount.text = shellData._count.ToString();
         }
 
         public void UpdateCount(int count)

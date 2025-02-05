@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Views;
+﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Views;
 using Assets.Scripts.Shop.ResearchTree.Upgrade.Upgraders;
 using Assets.Scripts.Shop.ResearchTree.Upgraders;
 using Assets.Scripts.Shop.Shells;
@@ -19,7 +20,7 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade.Models
 
         private ShellType _unlockType;
 
-        public ShellUnlockModel(UpgradeStatusDictonary status, UpgradeView view, VehicleData data, ShellType unlockType) : base(status, view, data)
+        public ShellUnlockModel(UpgradeStatusDictonary status, UpgradeView view, VehicleData data, string key, ShellType unlockType) : base(status, view, data, key)
         {
             _unlockType = unlockType;
             if(view is ShellUnlockView)

@@ -15,9 +15,17 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade.Monos
 
         protected override void Start()
         {
-            _model = new(_status, _view, _vehicleData, _type);
+            _model = new(_status, _view, _vehicleData, _saveKey,_type);
             _presenter = new(_model, _view, _researchPrice, _moneyPrice);
             base.Start();
+
+            _container.Inject(_model);
+        }
+
+        private void OnDestroy()
+        {
+            _model.OnDestroy();
+            _presenter.OnDestroy();
         }
 
     }

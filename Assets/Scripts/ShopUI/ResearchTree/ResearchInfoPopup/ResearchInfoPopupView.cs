@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Architecture;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,28 @@ namespace Assets.Scripts.Shop.ResearchTree
         [SerializeField] private TextMeshProUGUI _enginePower;
         [SerializeField] private TextMeshProUGUI _turretRottationSpeed;
         [SerializeField] private TextMeshProUGUI _reloadSpeed;
+
+        [SerializeField] private Button _selectButton;
+        [SerializeField] private TextMeshProUGUI _buttonText;
+        [SerializeField] private Image _buttonImage;
+        [SerializeField] private Color _awailableColor;
+        [SerializeField] private Color _notAwailableColor;
+
+        public void ButtonUpdate(bool status)
+        {
+            if (status)
+            {
+                _selectButton.enabled = true;
+                _buttonText.text = "Select";
+                _buttonImage.color = _awailableColor;
+            }
+            else
+            {
+                _selectButton.enabled = false;
+                _buttonText.text = "NotAwailable";
+                _buttonImage.color = _notAwailableColor;
+            }
+        }
 
         public void UpdateInfo(VehicleData data)
         {

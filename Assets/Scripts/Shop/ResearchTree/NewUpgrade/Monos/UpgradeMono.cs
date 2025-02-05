@@ -1,7 +1,11 @@
-﻿using R3;
+﻿using Assets.Scripts.Architecture;
+using R3;
+using System;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade.Monos
 {
@@ -18,12 +22,27 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade.Monos
 
         [SerializeField] protected UpgradeStatusDictonary _status;
 
+        [SerializeField] protected string _saveKey;
         private CompositeDisposable _disposable = new();
+
+        [Inject]
+        protected DiContainer _container;
         
         protected virtual void Start()
         {
+            if (string.IsNullOrEmpty(_saveKey))
+            {
+                throw new InvalidOperationException("Key has not been initialized.");
+            }
             _presenter.Init(_previousUpgrade);
             _presenter._upgradeBought.Subscribe(_ => _upgradeBought?.OnNext(R3.Unit.Default)).AddTo(_disposable);
+
+        }
+
+        [ContextMenu("GenerateKey")]
+        private void GenerateKey()
+        {
+            _saveKey = Guid.NewGuid().ToString();
         }
 
         private void OnDestroy()

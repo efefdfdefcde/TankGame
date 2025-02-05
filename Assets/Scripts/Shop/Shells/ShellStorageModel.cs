@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Shop.ResearchTree;
+﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.Shop.ResearchTree;
 using R3;
 using System.Collections;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Assets.Scripts.Shop.Shells
     {
         public Subject<VehicleData> _setDataEvent = new();
 
-        [SerializeField] private PlayerDataManager _dataManager;
+        [SerializeField] private VehicleChanger _dataManager;
 
         private VehicleData _data;
 

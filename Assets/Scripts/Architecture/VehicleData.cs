@@ -1,10 +1,11 @@
-﻿using Assets.Scripts.Shop.Shells;
+﻿using Assets.Scripts.Shop.ResearchTree;
+using Assets.Scripts.Shop.Shells;
 using R3;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Shop.ResearchTree
+namespace Assets.Scripts.Architecture
 {
     [CreateAssetMenu(fileName = "VenicleData", menuName = "ScriptableObjects/VenicleData", order = 3)]
     public class VehicleData : ScriptableObject
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Shop.ResearchTree
         public int _shellStorageCapasity;
         public GameObject _viewPrefab;
         public GameObject _researchPrefab;
+        public GameObject _gameplayPrefab;
 
 
         public Dictionary<ShellType,ShellData> _shellInfo = new();

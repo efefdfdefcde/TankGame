@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Shop.ResearchTree;
+﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.Shop.ResearchTree;
 using R3;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ namespace Assets.Scripts.ShopUI.ResearchTree
         public Subject<VehicleData> _researchVenicleEvent = new();
 
         [SerializeField] private Button _button;
-        [SerializeField] private PlayerDataManager _researchManager;
+        [SerializeField] private VehicleChanger _researchManager;
 
         private VehicleData _playerVenicle;
         private CompositeDisposable _disposable = new();

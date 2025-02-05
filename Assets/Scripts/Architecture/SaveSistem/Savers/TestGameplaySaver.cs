@@ -3,22 +3,24 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-namespace Assets.Scripts.Architecture.SaveSistem.Test
+namespace Assets.Scripts.Architecture.SaveSistem
 {
-    public class ShopSaver : MonoBehaviour
+    public class TestGameplaySaver : MonoBehaviour
     {
         public int _money;
+        public int _researchPoints;
         public int _gold;
 
-
-
-        private void Save()
+        [ContextMenu("Save")]
+        public void Save()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Application.persistentDataPath + "/ShopExitParams.dat";
             FileStream stream = new FileStream(path, FileMode.Create);
-            ShopExitParams menuExitParams = new(_money, _gold);
-            formatter.Serialize(stream, menuExitParams);
+            ShopExitParams menuEnterParams = new();
+            menuEnterParams._money = _money;
+            menuEnterParams._gold = _gold;
+            formatter.Serialize(stream, menuEnterParams);
             stream.Close();
         }
     }

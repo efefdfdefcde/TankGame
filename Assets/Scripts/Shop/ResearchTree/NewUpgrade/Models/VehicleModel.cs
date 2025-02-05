@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Views;
+using Assets.Scripts.Architecture;
 
 namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade.Models
 { 
@@ -32,7 +33,7 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade.Models
         private List<StructUpgrade> _upgradeList;
         private VehicleView _vehicleView;
 
-        public VehicleModel(UpgradeStatusDictonary status, UpgradeView view, VehicleData data, List<StructUpgrade> upgradeList) : base(status, view, data)
+        public VehicleModel(UpgradeStatusDictonary status, UpgradeView view, VehicleData data, string key, List<StructUpgrade> upgradeList) : base(status, view, data, key)
         {
             _upgradeList = upgradeList;
             if (view is VehicleView)

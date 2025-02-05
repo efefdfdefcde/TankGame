@@ -1,4 +1,5 @@
-﻿using R3;
+﻿using Assets.Scripts.Architecture;
+using R3;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,22 +7,25 @@ using Zenject;
 
 namespace Assets.Scripts.Shop.ResearchTree
 {
-    public class VenicleDemonstrator : MonoBehaviour
+    public class VenicleSpawner : MonoBehaviour
     {
 
         [SerializeField] private ResearchInfoPopup _infoPopup;
-        [SerializeField] private GameObject _playerView;
         [SerializeField] private GameObject _spawnPosition;
         [SerializeField] private Button _closeButton;
         [SerializeField] private PopupSwitcher _popupSwitcher;
         [SerializeField] private GameObject freeLookCam;
 
-        private GameObject _venicleView;
+        [SerializeField] private VehicleChanger _dataManager;
+
+        private GameObject _playerView;
+        private GameObject _venicleView;//Override
         private CompositeDisposable _disposable = new();
 
         [Inject]
         private void Construct()
         {
+            _dataManager._setVenicleEvent.Subscribe(data => SpawnPlayerView(data)).AddTo(_disposable);
             EventBus.Instance._panelCloseEvent.Subscribe(_ => CloseDemonstration()).AddTo(_disposable);
             _closeButton.onClick.AddListener(CloseDemonstration);
             _infoPopup._demonstrateVenicleEvent.Subscribe(viewPrefab  => Demonstrate(viewPrefab)).AddTo(_disposable);
@@ -43,6 +47,13 @@ namespace Assets.Scripts.Shop.ResearchTree
             Destroy(_venicleView);
             _playerView.SetActive(true);
             freeLookCam.SetActive(false);
+        }
+
+        private void SpawnPlayerView(VehicleData data)
+        {
+            if(_playerView)Destroy(_playerView);
+            _playerView = Instantiate(data._viewPrefab,_spawnPosition.transform.position,data._viewPrefab.transform.rotation); 
+
         }
 
         private void OnDestroy()

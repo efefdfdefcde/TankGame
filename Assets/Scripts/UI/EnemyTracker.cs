@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.TankParts.Player;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts.UI
 {
@@ -10,10 +11,10 @@ namespace Assets.Scripts.UI
 
         private Collider _enemy;
 
-        private void Awake()
+        [Inject]
+        private void Construct()
         {
             _scaner._closestEnemyAction += SetEnemy;
-            gameObject.SetActive(false);
         }
 
         private void Update()

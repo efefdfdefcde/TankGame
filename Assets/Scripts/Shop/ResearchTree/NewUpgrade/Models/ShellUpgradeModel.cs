@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Upgraders.ShellUpgrade;
+﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Upgraders.ShellUpgrade;
 using Assets.Scripts.Shop.ResearchTree.NewUpgrade.Views;
 using Assets.Scripts.Shop.Shells;
 using System;
@@ -34,7 +35,7 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade.Models
 
         private List<ShellUpgradeStruct> _upgradeList;
 
-        public ShellUpgradeModel(UpgradeStatusDictonary status, UpgradeView view, VehicleData data, List<ShellUpgradeStruct> upgradeList) : base(status, view, data)
+        public ShellUpgradeModel(UpgradeStatusDictonary status, UpgradeView view, VehicleData data, string key, List<ShellUpgradeStruct> upgradeList) : base(status, view, data, key)
         {
             _upgradeList = upgradeList;
             if (view is ShellUpgradeView)

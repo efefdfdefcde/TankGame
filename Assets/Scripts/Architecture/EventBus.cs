@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Shop.ResearchTree;
+﻿using Assets.Scripts.Architecture;
+using Assets.Scripts.Shop.ResearchTree;
 using Assets.Scripts.Shop.Shells;
 using R3;
 using System;
@@ -50,5 +51,8 @@ namespace Assets
         public Subject<Unit> _shellUpdate = new();
         //ShellPopup
         public Subject<(int, ShellType)> _shellCountChanged = new();
+
+        public Subject<VehicleData> _nextPopupEvent = new();
+
     }
 }

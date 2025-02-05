@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069b2772cddf75b4eae90e997ab4751d, type: 3}
   m_Name: VenicleData
   m_EditorClassIdentifier: 
+  _isAwailable: 0
   _name: Tiger 1
   _Icon: {fileID: 21300000, guid: 039a43ca7b2bb7c4d9cf7b1a4570ccb3, type: 3}
   _health: 1400
@@ -20,16 +21,24 @@ MonoBehaviour:
   _enginePower: 323
   _turretRotationSpeed: 272
   _reloadSpeed: 323
-  _researchPoints: 10000
-  _viewPrefab: {fileID: 6552289431838904732, guid: 635051326940f084381c91536051f3b9,
+  _researchPoints: 802
+  _shellStorageCapasity: 100
+  _viewPrefab: {fileID: 2237615619948967082, guid: b678df19bbf2fe84e9cacb6cae903712,
     type: 3}
-  _researchPrefab: {fileID: 2170180619756028010, guid: 32c0df29e4569724e8b95d530f015b29,
+  _researchPrefab: {fileID: 2170180619756028010, guid: 2a785040445ae104a8ac2f591a819545,
     type: 3}
+  _gameplayPrefab: {fileID: 0}
   _structs:
-  - _isAllowed: 0
-    _shellType: 0
+  - _shellType: 0
     _data:
+      _isAllowed: 1
+      _name: 
       _damage: 0
       _shellPenetration: 0
       _fuseSensivity: 0
-    _gameplayData: {fileID: 0}
+      _count: 39
+      _shellImage: {fileID: 7681201850867341242, guid: 215687feeab0b7445b4a1cd86c82c2e1,
+        type: 3}
+      _selectColor: {r: 0.64705884, g: 0.03137255, b: 0.03137255, a: 1}
+      _shellPrefab: {fileID: 1064822408975798265, guid: d8e3ecfd6be41224cb7059b882af25d5,
+        type: 3}

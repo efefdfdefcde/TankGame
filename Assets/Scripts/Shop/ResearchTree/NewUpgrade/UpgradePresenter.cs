@@ -10,7 +10,7 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade
     [Serializable]
     public class UpgradePresenter 
     {
-        public Subject<Unit> _upgradeBought = new();
+        public ReplaySubject<Unit> _upgradeBought = new();
 
         private int _upgradeResearchPrice;
         private int _upgradeMoneyPrice;
@@ -21,6 +21,9 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade
         private UpgradeMono _mono;
         private int _researchP;
         private CompositeDisposable _disposables = new();
+        private IDisposable _disposed ;
+
+        
 
         public UpgradePresenter(UpgradeModel model, UpgradeView view, int researchPrice, int upgradePrice)
         {
@@ -39,7 +42,7 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade
             if (mono)
             {
                 _mono = mono;
-                _mono._upgradeBought.Subscribe(_ => PreviousBought()).AddTo(_disposables);
+                _disposed = _mono._upgradeBought.Subscribe(_ => PreviousBought()).AddTo(_disposables);
             }
         }
 
@@ -52,9 +55,13 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade
                     break;
                 case UpgradeStatusDictonary.Researched:
                     BuyCheck();
+                    _disposed.Dispose();
                     break;
                 case UpgradeStatusDictonary.Bought:
                     _view.UpgradeBought();
+                    _upgradeBought.OnNext(Unit.Default);
+                    _upgradeBought.OnCompleted();
+                    _disposed?.Dispose();
                     break;
                 default:
                     _view.UpgradeNotAwailable();
@@ -88,8 +95,6 @@ namespace Assets.Scripts.Shop.ResearchTree.NewUpgrade
             if (_status == UpgradeStatusDictonary.Researched) 
             {
                 _model.Upgrade(_upgradeMoneyPrice); 
-                _upgradeBought.OnNext(Unit.Default);
-                _upgradeBought.OnCompleted();
                 EventBus.Instance._getExpirience.OnNext(_upgradeResearchPrice);
             }
             else _model.Research(_upgradeResearchPrice);
