@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Architecture;
 using Assets.Scripts.Shop.ResearchTree;
 using Assets.Scripts.Shop.Shells;
+using Assets.Scripts.ShopUI.ResearchTree;
 using R3;
 using System;
 using System.Collections;
@@ -53,6 +54,13 @@ namespace Assets
         public Subject<(int, ShellType)> _shellCountChanged = new();
 
         public Subject<VehicleData> _nextPopupEvent = new();
+
+        //Scenes
+        public Subject<Unit> _toShopEvent = new();
+        public Subject<Unit> _toBattleEvent = new();
+
+        public Subject<VehicleData> _openInfoPanel = new();
+        public Subject<ResearchTreePopupModel> _switchSignalEvent = new();
 
     }
 }

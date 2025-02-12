@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Architecture;
 using Assets.Scripts.ShopUI.ResearchTree;
 using R3;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -27,14 +28,15 @@ namespace Assets.Scripts.Shop.ResearchTree
             _controller._demonstrateEvent.Subscribe(_ => DemonstrateVenicle()).AddTo(_disposable);
             _controller._closeEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable);
             _controller._changeVehicle.Subscribe(_ => ChangeVehicle()).AddTo(_disposable);
-            VenicleContainerModel._openInfoPanel.Subscribe(data => OpenPanel(data)).AddTo(_disposable);
-            ResearchTreePopupModel._switchSignalEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable);
+            EventBus.Instance._openInfoPanel.Subscribe(data => OpenPanel(data)).AddTo(_disposable);
+            EventBus.Instance._switchSignalEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable);
             EventBus.Instance._panelCloseEvent.Subscribe(_ => ClosePanel()).AddTo(_disposable); 
         }
 
         private void OpenPanel(VehicleData data)
         {
-            _popup.SetActive(true);
+            try { _popup.SetActive(true); }
+            catch { NullReferenceException ex; }
             _view.UpdateInfo(data);
             _view.ButtonUpdate(data._isAwailable);
             _data = data;
@@ -57,7 +59,8 @@ namespace Assets.Scripts.Shop.ResearchTree
 
         private void ClosePanel()
         {
-            _popup.SetActive(false);
+            try { _popup.SetActive(false); }
+            catch { NullReferenceException ex; }         
         }
 
         private void OnDestroy()

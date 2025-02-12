@@ -17,6 +17,7 @@ namespace Assets.Scripts.Shop
         [SerializeField] private DataManagerShop _dataManager;
 
         private int _expirience;
+        private int _expirienceLevel;
         private int _currentLevel;
 
         private CompositeDisposable _disposable = new();
@@ -38,21 +39,21 @@ namespace Assets.Scripts.Shop
         {
             _currentLevel = levelInfo.level;
             _expirience = levelInfo.experience;
-            var level = _levelList[_currentLevel];
-            _ui.UpdateLevel(_expirience, level, _currentLevel);
+            _expirienceLevel = _levelList[_currentLevel];
+            _ui.UpdateLevel(_expirience, _expirienceLevel, _currentLevel);
         }
 
         private void GetExperience(int experience)
         {
             _expirience += experience;
-            var level = _levelList[_currentLevel];
-            if(_expirience >= level)
+            while(_expirience >= _expirienceLevel)
             {
-                _expirience -= level;
+                _expirience -= _expirienceLevel;
                 _currentLevel++;
+                _expirienceLevel = _levelList[_currentLevel];
             }
             _levelChanged.OnNext((_currentLevel, _expirience));
-            _ui.UpdateLevel(_expirience,level,_currentLevel);
+            _ui.UpdateLevel(_expirience,_expirienceLevel,_currentLevel);
         }
 
         private void OnDestroy()

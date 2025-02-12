@@ -13,7 +13,7 @@ namespace Assets.Scripts.Architecture
 {
     public class DataManagerShop : MonoBehaviour
     {
-        public Subject<(int,int,int,int)> _bankInitialize = new();
+        public Subject<(int,int,int,int,string,int)> _bankInitialize = new();
         public Subject<Dictionary<string, UpgradeStatusDictonary>> _upgradeInitialize = new();
         public Subject<(int,int)> _levelInitialize = new();
         public Subject<(ShopExitParams,GameplayEnterParams)> _save = new();
@@ -60,8 +60,12 @@ namespace Assets.Scripts.Architecture
         }
 
         private void Bank()
-        {
-            _bank._bankInitialize.Subscribe(_ => _bankInitialize.OnNext((_exitParams._money, _exitParams._gold, _enterParams._money, _enterParams._gold))).AddTo(_disposable);
+        {   
+            if(_enterParams != null)
+            {
+                _bank._bankInitialize.Subscribe(_ => _bankInitialize.OnNext((_exitParams._money, _exitParams._gold, _enterParams._money,
+                 _enterParams._gold, _exitParams._currentVehicleWay, _enterParams._researchPoints))).AddTo(_disposable);
+            }
             _bank._moneyChangedEvent.Subscribe(money => _exitParams._money = money).AddTo(_disposable);
             _bank._goldChangedEvent.Subscribe(gold => _exitParams._gold = gold).AddTo(_disposable);
         }

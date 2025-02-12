@@ -1,3 +1,4 @@
+using Assets;
 using Assets.Scripts.Architecture;
 using Assets.Scripts.Shop.ResearchTree;
 using R3;
@@ -6,7 +7,7 @@ using Zenject;
 
 public class VenicleContainerModel : MonoBehaviour
 {
-    public static Subject<VehicleData> _openInfoPanel = new();
+   
 
     [SerializeField] private VenicleContainerView _view;
     [SerializeField] private VenicleContainerController _controller;
@@ -23,7 +24,7 @@ public class VenicleContainerModel : MonoBehaviour
 
     private void OpenInfo()
     {
-        _openInfoPanel?.OnNext(_data);
+        EventBus.Instance._openInfoPanel?.OnNext(_data);
     }
 
     private void OnDestroy()

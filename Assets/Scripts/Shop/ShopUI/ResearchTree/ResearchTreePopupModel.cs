@@ -7,7 +7,7 @@ namespace Assets.Scripts.ShopUI.ResearchTree
 {
     public class ResearchTreePopupModel : MonoBehaviour
     {
-        public static Subject<ResearchTreePopupModel> _switchSignalEvent = new();
+       
 
         [SerializeField] private ResearchTreePopupController _controller;
         [SerializeField] private ResearchTreePopupView _view;
@@ -22,7 +22,7 @@ namespace Assets.Scripts.ShopUI.ResearchTree
 
         private void SwitchSignal()
         {
-            _switchSignalEvent?.OnNext(this);
+            EventBus.Instance._switchSignalEvent?.OnNext(this);
         }
 
         public void ActivatePopup()

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Architecture;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -26,21 +27,30 @@ namespace Assets.Scripts.Shop.ResearchTree
         {
             if (status)
             {
-                _selectButton.enabled = true;
+                try { _selectButton.enabled = true; }
+                catch { NullReferenceException ex; }
+               
                 _buttonText.text = "Select";
-                _buttonImage.color = _awailableColor;
+                try { _buttonImage.color = _awailableColor; }
+                catch { NullReferenceException ex; }
+              
             }
             else
             {
-                _selectButton.enabled = false;
+                try { _selectButton.enabled = false; }
+                catch { NullReferenceException ex; }
+               
                 _buttonText.text = "NotAwailable";
-                _buttonImage.color = _notAwailableColor;
+                try { _buttonImage.color = _notAwailableColor; }
+                catch { NullReferenceException ex; }
+               
             }
         }
 
         public void UpdateInfo(VehicleData data)
         {
-            _icon.sprite = data._Icon;
+            try { _icon.sprite = data._Icon; }
+            catch { NullReferenceException ex; }         
             _name.text = data._name;
             _health.text = data._health.ToString();
             _speed.text = data._speed.ToString();

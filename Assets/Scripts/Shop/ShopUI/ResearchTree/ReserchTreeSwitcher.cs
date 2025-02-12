@@ -20,7 +20,7 @@ namespace Assets.Scripts.ShopUI
         private void Construct()
         {
             SwitchPopup(_startPopup);
-            ResearchTreePopupModel._switchSignalEvent.Subscribe(popup  => SwitchPopup(popup)).AddTo(_disposables);
+            EventBus.Instance._switchSignalEvent.Subscribe(popup  => SwitchPopup(popup)).AddTo(_disposables);
         }
 
         private void SwitchPopup(ResearchTreePopupModel popup)

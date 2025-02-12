@@ -8,20 +8,39 @@ namespace Assets.Scripts.Shop
 {
     public class SceneSwitcher : MonoBehaviour
     {
-        [SerializeField] private BattleButton _button;
 
         private CompositeDisposable _disposables = new();
+
+        private static SceneSwitcher instance;
 
         [Inject]
         private void Construct()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
             DontDestroyOnLoad(gameObject);
-            _button._toBattleEvent.Subscribe(_ => SceneLoad()).AddTo(_disposables);
+            EventBus.Instance._toBattleEvent.Subscribe(_ => StartCoroutine(SceneLoad())).AddTo(_disposables);
+            EventBus.Instance._toShopEvent.Subscribe(_ => StartCoroutine(ShopLoad())).AddTo(_disposables);
         }
 
-        private void SceneLoad()
+        private IEnumerator ShopLoad()
         {
             SceneManager.LoadScene("LoadScreen");
+            yield return new WaitForSeconds(2);
+            SceneManager.LoadScene("Shop");
+        }
+
+        private IEnumerator SceneLoad()
+        {
+            SceneManager.LoadScene("LoadScreen");
+            yield return new WaitForSeconds(2);
             SceneManager.LoadScene("Gameplay");
 
         }

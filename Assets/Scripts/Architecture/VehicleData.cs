@@ -41,10 +41,13 @@ namespace Assets.Scripts.Architecture
 
         public void FillDictonary()
         {
-            foreach(var structD in _structs)
+            if(_shellInfo.Count == 0)
             {
-                _shellInfo.Add(structD._shellType,structD._data);
-            }
+                foreach (var structD in _structs)
+                {
+                    _shellInfo.Add(structD._shellType, structD._data);
+                }
+            }        
         }
         #endregion
         //DictonaryFill

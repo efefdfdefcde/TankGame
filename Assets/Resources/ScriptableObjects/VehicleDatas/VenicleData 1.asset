@@ -15,13 +15,13 @@ MonoBehaviour:
   _isAwailable: 1
   _name: bt5
   _Icon: {fileID: 21300000, guid: 6e83360609a0aaf4e93c2c9a8606dec7, type: 3}
-  _health: 1750
+  _health: 2400
   _armor: 4620
   _speed: 545
   _enginePower: 54
   _turretRotationSpeed: 2765
-  _reloadSpeed: 37043
-  _researchPoints: 6000
+  _reloadSpeed: 43543
+  _researchPoints: 3863
   _shellStorageCapasity: 100
   _viewPrefab: {fileID: 8722284609859799867, guid: a46f5aab42463de4194a5f9058c42d45,
     type: 3}
@@ -33,10 +33,10 @@ MonoBehaviour:
     _data:
       _isAllowed: 1
       _name: Armor Piersing
-      _damage: 375
-      _shellPenetration: 1360
+      _damage: 575
+      _shellPenetration: 1635
       _fuseSensivity: 20
-      _count: 37
+      _count: 0
       _shellImage: {fileID: -7512552, guid: dd0f73cc945e04147abbd50ba29f99ce, type: 3}
       _selectColor: {r: 0.8490566, g: 0.07529365, b: 0.07529365, a: 1}
       _shellPrefab: {fileID: 1064822408975798265, guid: d8e3ecfd6be41224cb7059b882af25d5,
@@ -45,10 +45,10 @@ MonoBehaviour:
     _data:
       _isAllowed: 1
       _name: Hight Explosive
-      _damage: 1874
+      _damage: 2209
       _shellPenetration: 20
       _fuseSensivity: 0
-      _count: 49
+      _count: 41
       _shellImage: {fileID: 1489169533, guid: dd0f73cc945e04147abbd50ba29f99ce, type: 3}
       _selectColor: {r: 0.9647059, g: 0.94509804, b: 0, a: 1}
       _shellPrefab: {fileID: 1064822408975798265, guid: cef4e4bfafbbd9e40b684eae6fde694a,
@@ -57,8 +57,8 @@ MonoBehaviour:
     _data:
       _isAllowed: 0
       _name: Shaped Charge
-      _damage: 2355
-      _shellPenetration: 2550
+      _damage: 2930
+      _shellPenetration: 3125
       _fuseSensivity: 0
       _count: 0
       _shellImage: {fileID: 0}

@@ -9,7 +9,7 @@ namespace Assets.Scripts.Shop
     public class BattleButton : MonoBehaviour
     {
         public Subject<Unit> _saveData = new();
-        public Subject<Unit> _toBattleEvent = new();
+       
 
         [SerializeField] private Button _toBattle;
 
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Shop
         private void ToBattle()
         {
             _saveData.OnNext(Unit.Default);
-            _toBattleEvent.OnNext(Unit.Default);
+            EventBus.Instance._toBattleEvent.OnNext(Unit.Default);
         }
 
         private void OnDestroy()

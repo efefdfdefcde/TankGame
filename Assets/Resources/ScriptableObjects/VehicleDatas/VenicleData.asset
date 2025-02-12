@@ -21,7 +21,7 @@ MonoBehaviour:
   _enginePower: 323
   _turretRotationSpeed: 272
   _reloadSpeed: 323
-  _researchPoints: 802
+  _researchPoints: 6000
   _shellStorageCapasity: 100
   _viewPrefab: {fileID: 2237615619948967082, guid: b678df19bbf2fe84e9cacb6cae903712,
     type: 3}
@@ -36,7 +36,7 @@ MonoBehaviour:
       _damage: 0
       _shellPenetration: 0
       _fuseSensivity: 0
-      _count: 39
+      _count: 60
       _shellImage: {fileID: 7681201850867341242, guid: 215687feeab0b7445b4a1cd86c82c2e1,
         type: 3}
       _selectColor: {r: 0.64705884, g: 0.03137255, b: 0.03137255, a: 1}

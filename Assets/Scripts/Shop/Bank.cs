@@ -13,8 +13,9 @@ public class Bank : MonoBehaviour
 
     [SerializeField] private DataManagerShop _dataManager;
 
-    public static int _money {  get; private set; }
-    public static int _gold {  get; private set; }
+    public static int _money { get; private set; } = 600;
+    public static int _gold { get; private set; } = 200;
+
 
     private CompositeDisposable _disposable = new();
 
@@ -34,12 +35,14 @@ public class Bank : MonoBehaviour
     }
 
 
-    private void Init((int exitParamsMoney, int exitParamsGold, int enterParamsMoney, int enterParamsGold) bankData)
+    private void Init((int exitParamsMoney, int exitParamsGold, int enterParamsMoney, int enterParamsGold,  string currentDataWay, int enterParamsRPoints) bankData)
     {
         _money = bankData.exitParamsMoney;
         _gold = bankData.exitParamsGold;
         _money += bankData.enterParamsMoney;
         _gold += bankData.enterParamsGold;
+        VehicleData data = Resources.Load<VehicleData>($"ScriptableObjects/VehicleDatas/{bankData.currentDataWay}");
+        data._researchPoints += bankData.enterParamsRPoints;
     }
 
     private void SpendMoney(int money)
