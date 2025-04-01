@@ -25,7 +25,7 @@ namespace Assets.Scripts.ShopUI
 
         private void UpdateGold(int gold) => _gold.text = gold.ToString();
 
-        private void OnDestroy()
+        private void OnDestroy() 
         {
             _disposable.Dispose();
         }

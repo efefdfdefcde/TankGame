@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59008ee7caa9a844993a9a40d58ac9df, type: 3}
+  m_Name: Corpus 2
+  m_EditorClassIdentifier: 
+  _battleRating: 2
+  _isAwailable: 1
+  _nation: 1
+  _part: 0
+  _icon: {fileID: 21300000, guid: 2418162196241b34f9d92a9f8136b71e, type: 3}
+  _name: Corpus3
+  _health: 92
+  _armor: 77
+  _weight: 10
+  _shellCapacity: 108
+  _shopPrefab: {fileID: 6145541951881816049, guid: a5d0b9d237c719b41975a94d5670b521,
+    type: 3}
+  _gameplayPrefab: {fileID: 6145541951881816049, guid: a5d0b9d237c719b41975a94d5670b521,
+    type: 3}
